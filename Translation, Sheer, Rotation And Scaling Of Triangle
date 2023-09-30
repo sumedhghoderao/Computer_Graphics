@@ -1,0 +1,329 @@
+#include<GL/gl.h>
+#include<GL/glut.h>
+#include<math.h>
+#include<iostream>
+using namespace std;
+void init();
+void display();
+void dda(int x1,int y1,int x2,int y2);
+void ddar(int x1,int y1,int x2,int y2);
+void ddas(int x1,int y1,int x2,int y2);
+void ddashx(int x1,int y1,int x2,int y2);
+void ddashy(int x1,int y1,int x2,int y2);
+void ddat(int x1,int y1,int x2,int y2);
+int x1,x2,y2,r;
+int main(int argc,char **argv)
+{
+glutInit(&argc,argv);
+glutInitWindowSize(700,700);
+glutCreateWindow("Sumedh");
+init();
+glutDisplayFunc(display);
+glutMainLoop();
+}
+void init()
+{
+glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+gluOrtho2D(-1000.0,1000.0,-1000.0,1000.0);
+}
+void display()
+{
+int s;
+int ch;
+int w;
+do
+{
+cout<<"\nEnter yourr choice\n1.Triangle\n2.Rhombus\n3.Exit\n";
+cin>>s;
+switch(s)
+{
+case 1:
+
+do
+{
+cout<<"\nEnter your choice\n1.Normal triangle\n2.Scaling of triangle\n3.Rotation of triangle\n4.X-shear\n5.Y-shear\n6.Translation\n7.Exit\n";
+cin>>ch;
+switch(ch)
+{
+case 1:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+dda(-1.73*200,-200,0,2*200);
+dda(-1.73*200,-200,1.73*200,-200);
+dda(1.73*200,-200,0,2*200);
+break;
+
+case 2:glClearColor(1.0,0.0,0.0,0.0);glClear(GL_COLOR_BUFFER_BIT);
+ddas(-1.73*200,-200,0,2*200);
+ddas(-1.73*200,-200,1.73*200,-200);
+ddas(1.73*200,-200,0,2*200);
+break;
+
+case 3:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddar(-1.73*200,-200,0,2*200);
+ddar(-1.73*200,-200,1.73*200,-200);
+ddar(1.73*200,-200,0,2*200);
+break;
+
+case 4:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddashx(-1.73*200,-200,0,2*200);
+ddashx(-1.73*200,-200,1.73*200,-200);
+ddashx(1.73*200,-200,0,2*200);
+break;
+
+case 5:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddashy(-1.73*200,-200,0,2*200);
+ddashy(-1.73*200,-200,1.73*200,-200);
+ddashy(1.73*200,-200,0,2*200);
+break;
+
+case 6:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddat(-1.73*200,-200,0,2*200);
+ddat(-1.73*200,-200,1.73*200,-200);
+ddat(1.73*200,-200,0,2*200);
+break;
+}
+glFlush();
+}while(ch!=7);
+
+case 2:
+
+do
+{
+cout<<"\nEnter yourr choice\n1.Normal Rhombus\n2.Scaling of Rhombus\n3.Rotation of Rhombus\n4.X-shear\n5.Y-shear\n6.Translation of rhombus\n7.Exit\n";
+cin>>w;
+switch(w)
+{
+case 1:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+dda(-1.73*100,-100,0,2*100);
+dda(0,2*100,2*1.73*100,2*100);
+dda(-1.73*100,-100,1.73*100,-100);
+dda(1.73*100,-100,2*1.73*100,2*100);
+break;
+
+case 2:glClearColor(1.0,0.0,0.0,0.0);glClear(GL_COLOR_BUFFER_BIT);
+ddas(-1.73*100,-100,0,2*100);
+ddas(0,2*100,2*1.73*100,2*100);
+ddas(-1.73*100,-100,1.73*100,-100);
+ddas(1.73*100,-100,2*1.73*100,2*100);
+break;
+
+case 3:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddar(-1.73*100,-100,0,2*100);
+ddar(0,2*100,2*1.73*100,2*100);
+ddar(-1.73*100,-100,1.73*100,-100);
+ddar(1.73*100,-100,2*1.73*100,2*100);
+break;
+
+case 4:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddashx(-1.73*100,-100,0,2*100);
+ddashx(0,2*100,2*1.73*100,2*100);
+ddashx(-1.73*100,-100,1.73*100,-100);
+ddashx(1.73*100,-100,2*1.73*100,2*100);
+break;
+
+case 5:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddashy(-1.73*100,-100,0,2*100);
+ddashy(0,2*100,2*1.73*100,2*100);
+ddashy(-1.73*100,-100,1.73*100,-100);
+ddashy(1.73*100,-100,2*1.73*100,2*100);
+break;
+
+case 6:glClearColor(1.0,0.0,0.0,0.0);
+glClear(GL_COLOR_BUFFER_BIT);
+ddat(-1.73*100,-100,0,2*100);
+ddat(0,2*100,2*1.73*100,2*100);
+ddat(-1.73*100,-100,1.73*100,-100);
+ddat(1.73*100,-100,2*1.73*100,2*100);
+break;
+}
+glFlush();
+}while(ch!=7);
+
+}
+glFlush();
+}while(ch!=3);
+}
+//normal
+void dda(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;
+x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+glVertex2i(x,y);
+glEnd();
+x=x+dx1;
+y=y+dy1;
+i=i+1;
+}
+}
+//scaling
+void ddas(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+//glVertex2i(x,y);
+glVertex2i(2*x,2*y);
+glEnd();
+x=x+dx1;
+y=y+dy1;
+i=i+1;
+}
+}
+//rotation
+void ddar(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;
+x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+glVertex2i((x*cos(3.14/2))-(y*sin(3.14/2)),(x*sin(3.14/2))+(y*sin(3.14/2)));
+glEnd();
+x=x+dx1;y=y+dy1;
+i=i+1;
+}
+}
+//x shearing
+void ddashx(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;
+x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+glVertex2i((x+(2*y)),y);
+glEnd();
+x=x+dx1;
+y=y+dy1;
+i=i+1;
+}
+}
+//y shear
+void ddashy(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;
+x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+glVertex2i(x,(y+(x*2)));
+glEnd();
+x=x+dx1;
+y=y+dy1;
+i=i+1;
+}
+}
+
+//Translation
+void ddat(int x1,int y1,int x2,int y2)
+{
+float dx,dy,dx1,dy1,len,x,y;
+int i=1;
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>=dy)
+{
+len=dx;
+}
+else
+{
+len=dy;
+}
+dx1=(x2-x1)/len;
+dy1=(y2-y1)/len;
+x=x1;
+y=y1;
+while(i<=len)
+{
+glBegin(GL_POINTS);
+glVertex2i(x,y);
+glVertex2i(x+50,y+50);
+glEnd();
+x=x+dx1;
+y=y+dy1;
+i=i+1;
+}
+}
+
