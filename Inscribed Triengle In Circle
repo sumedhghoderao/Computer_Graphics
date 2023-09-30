@@ -1,0 +1,118 @@
+#include<GL/gl.h>
+#include<GL/glut.h>
+#include<iostream>
+using namespace std;
+
+ void background();
+ void display();
+void dda(float x1,float a1,float x2,float y2);
+ void bresenham(int r);
+ float x1,a1,x2,y2;
+ int r;
+int  main(int argc,char **argv)
+{
+
+//cout<<"Enter the values\n";
+//cin>>x1>>a1>>x2>>y2;
+cout<<"Enter the radius\n";
+cin>>r;
+
+   glutInit(&argc,argv);
+   glutInitWindowSize(500,500);
+   glutCreateWindow("king");
+  
+   background();
+   glutDisplayFunc(display);
+   
+   glutMainLoop();
+}
+ void background()
+ {
+   glClearColor(0,0,0,1);
+   glClear(GL_COLOR_BUFFER_BIT);
+   gluOrtho2D(-1000,1000,-1000,1000);
+}
+
+void display()
+{
+ 
+ bresenham(r);
+ 
+ bresenham(2*r);
+ dda(-1.73*r,-r,0,2*r);
+ dda(0,2*r,1.73*r,-r);
+ dda(-1.73*r,-r,1.73*r,-r);
+ glFlush();
+}
+
+void dda(float x1,float a1,float x2,float y2)
+{
+int len,i;
+float dx,dy,x,y;
+
+dx=abs(x2-x1);
+dy=abs(y2-a1);
+
+if(dx>=dy)
+{
+ len=dx;
+}
+else
+ len=dy;
+
+dx=(x2-x1)/len;
+dy=(y2-a1)/len;
+
+x=x1;
+y=a1;
+
+i=1;
+
+while(i<=len)
+{
+
+glBegin(GL_POINTS);
+
+glVertex2f(x,y);
+
+glEnd();
+
+x=x+dx;
+y=y+dy;
+
+i=i+1;
+}
+
+}
+
+void bresenham(int r)
+{
+	int d,x=0,y=r;
+	d=3-(2*r);
+	do
+	{
+	    glBegin(GL_POINTS);
+        glVertex2i(x,y);
+        glVertex2i(y,x);
+        glVertex2i(-y,x);
+        glVertex2i(-y,-x);
+        glVertex2i(-x,y);
+        glVertex2i(-x,-y);
+        glVertex2i(x,-y);
+        glVertex2i(y,-x);
+        glEnd();
+		
+		if(d<=0)
+		{
+			d=d+4*x+6;
+		}
+		else
+		{
+			d=d+(4*(x-y))+10;
+			y=y-1;
+			
+		}
+		 x=x+1;
+	}
+	while(x<y);
+}
